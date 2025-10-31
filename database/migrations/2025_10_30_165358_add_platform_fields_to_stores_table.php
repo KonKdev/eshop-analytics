@@ -6,29 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::table('stores', function (Blueprint $table) {
             if (!Schema::hasColumn('stores', 'platform')) {
                 $table->string('platform')->default('woocommerce');
             }
-
             if (!Schema::hasColumn('stores', 'access_token')) {
                 $table->string('access_token')->nullable();
             }
-
             if (!Schema::hasColumn('stores', 'magento_token')) {
                 $table->string('magento_token')->nullable();
             }
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table('stores', function (Blueprint $table) {
