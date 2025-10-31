@@ -21,11 +21,7 @@ RUN php artisan config:clear || true && \
     php artisan view:clear || true && \
     php artisan config:cache || true
 
-# ✅ Τρέξε τις migrations για να φτιαχτούν τα tables
-RUN php artisan migrate --force || true
-
 EXPOSE 80
-CMD ["/usr/bin/supervisord"]
 
-
-
+# ✅ Τρέχει migrate ΜΕΤΑ το φόρτωμα του .env και πριν ξεκινήσει το app
+CMD php artisan migrate --force && /usr/bin/supervisord
