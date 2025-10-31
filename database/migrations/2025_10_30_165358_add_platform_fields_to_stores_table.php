@@ -12,11 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('stores', function (Blueprint $table) {
-            //
-        $table->string('platform')->default('woocommerce');
-        $table->string('access_token')->nullable();
-        $table->string('magento_token')->nullable();
+            if (!Schema::hasColumn('stores', 'platform')) {
+                $table->string('platform')->default('woocommerce');
+            }
 
+            if (!Schema::hasColumn('stores', 'access_token')) {
+                $table->string('access_token')->nullable();
+            }
+
+            if (!Schema::hasColumn('stores', 'magento_token')) {
+                $table->string('magento_token')->nullable();
+            }
         });
     }
 
@@ -26,7 +32,15 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('stores', function (Blueprint $table) {
-            //
+            if (Schema::hasColumn('stores', 'platform')) {
+                $table->dropColumn('platform');
+            }
+            if (Schema::hasColumn('stores', 'access_token')) {
+                $table->dropColumn('access_token');
+            }
+            if (Schema::hasColumn('stores', 'magento_token')) {
+                $table->dropColumn('magento_token');
+            }
         });
     }
 };
