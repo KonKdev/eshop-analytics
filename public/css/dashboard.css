@@ -1,0 +1,118 @@
+
+
+#site-logo
+ {
+    max-height: 70px;
+    width: auto;
+}
+
+/* Media Query για μικρές οθόνες */
+@media (max-width: 991.98px) {
+    #site-logo {
+        max-height: 70px;
+    }
+}
+
+/* =====================================
+   GLOBAL ELEMENTS & UTILITIES
+   ===================================== */
+
+/* KPI & Card Styling */
+.card {
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Ελαφριά σκιά default */
+}
+
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px); /* Καλύτερη κίνηση προς τα πάνω */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Πιο έντονη σκιά στο hover */
+}
+
+.kpi-card {
+    background-color: #ffffff; /* Ορίζουμε λευκό background */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Κεντρική Κλάση για KPIs (kpi-box) - Απαλείφει το διπλό hover */
+.kpi-box {
+    transition: all 0.2s ease-in-out;
+}
+.kpi-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Typography */
+h3, h4 {
+    letter-spacing: -0.5px;
+}
+
+.section-title {
+    font-size: 1.6rem; /* Ελαφρώς μεγαλύτερο */
+    font-weight: 700;
+    color: #1f2937; /* gray-800 */
+    text-align: center;
+    margin-bottom: 2rem; /* Περισσότερο κενό */
+    border-bottom: 3px solid #6f42c1; /* Χρώμα μωβ για καλύτερο branding */
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+/* Spacing & Layout */
+.dashboard-section {
+    margin-top: 3rem;
+}
+
+.section-block {
+    margin-bottom: 4rem; /* 64px */
+}
+
+/* Buttons */
+.btn-outline-dark {
+    border-radius: 0.6rem;
+}
+
+.action-button {
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.action-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Colors */
+.text-purple {
+    color: #6f42c1 !important;
+}
+
+/* =====================================
+   ANIMATIONS (Καθαρισμός διπλών keyframes)
+   ===================================== */
+
+/* Χρησιμοποιούμε μόνο το fade-in και το @keyframes fadeInUp */
+.fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.7s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Counters - Visual only, η animation γίνεται με JS */
+.counter {
+    font-size: 2rem;
+    transition: color 0.2s ease;
+}

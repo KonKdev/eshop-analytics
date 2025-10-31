@@ -1,0 +1,298 @@
+/* Reset */
+body, h1, h2, h3, p, a {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+
+/* Layout */
+/* body.landing-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+} */
+
+/* Header */
+header {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #e3e3e0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1b1b18;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+    padding-right: 10px;
+}
+
+.btn-nav {
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    color: #1b1b18;
+    white-space: nowrap;
+}
+
+.btn-nav:hover {
+    background: #f3f3f3;
+}
+
+.btn-nav-primary {
+    background: #000000;
+    color: #fff;
+    /* border: 1px solid #f53003; */
+}
+
+.btn-nav-primary:hover {
+    background: #e7e2e1;
+    border-color: #ecebea;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 5rem 2rem;
+    flex: 1;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #1b1b18;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn {
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #1b1b18;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #000;
+}
+
+.btn-secondary {
+    border: 1px solid #1b1b18;
+    color: #1b1b18;
+}
+
+.btn-secondary:hover {
+    background: #f3f3f3;
+}
+
+/* Features */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    padding: 3rem 2rem;
+    background: #fafafa;
+}
+
+.feature h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.feature p {
+    color: #000000;
+    font-size: 0.95rem;
+}
+
+/* Pricing section */
+
+.pricing {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.pricing-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.pricing-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.pricing-cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 280px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card h3.plan {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.card .price {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card .desc {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.btn-pricing {
+  display: inline-block;
+  margin-top: auto; /* 👈 σπρώχνει το κουμπί κάτω */
+  padding: 0.7rem 1.5rem;
+  background: #f53003;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn-pricing:hover {
+  background: #c42100;
+}
+
+
+
+/* Free Trial Section */
+
+.trial-section {
+    background: linear-gradient(135deg, #070707, #070707);
+    color: #fff;
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+.trial-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.trial-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.trial-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.trial-button {
+    display: inline-block;
+    background: #fff;
+    /* color: #e53935; */
+    padding: 0.9rem 1.8rem;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.trial-button:hover {
+    background: #f1f1f1;
+}
+
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #777;
+    border-top: 1px solid #eee;
+}
+
+
+
+
+    body { 
+            scroll-behavior: smooth;
+            /* ✅ ΔΙΟΡΘΩΣΗ: Κρύβει το οριζόντιο κενό/scroll */
+            overflow-x: hidden; 
+        }
+        .hero { background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%); }
+        .feature-card {
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+        .demo-video {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* ΔΙΟΡΘΩΣΗ: Μείωση του logo σε κινητά για να χωράει το hamburger */
+        @media (max-width: 575.98px) {
+            .logo img {
+                max-width: 150px; 
+                height: auto;
+            }
+        }

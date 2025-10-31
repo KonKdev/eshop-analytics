@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: eshop-analytics
+    env: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: APP_KEY
+        sync: false
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: PORT
+        value: 10000
