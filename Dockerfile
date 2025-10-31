@@ -2,32 +2,30 @@
 # ✅ Laravel + Nginx + PHP 8.2
 # ----------------------------
 
-# Εικόνα που περιέχει ήδη PHP, Composer & Nginx
 FROM webdevops/php-nginx:8.2-alpine
 
-# Φάκελος εργασίας μέσα στο container
+# Ορισμός φακέλου εργασίας
 WORKDIR /app
 
-# Αντιγραφή composer αρχείων
-COPY composer.json composer.lock* ./
-
-# Εγκατάσταση PHP dependencies χωρίς dev
-RUN composer install --no-dev --optimize-autoloader
-
-# Αντιγραφή όλων των υπόλοιπων αρχείων
+# Αντιγραφή όλων των αρχείων στο container
 COPY . .
+
+# Εγκατάσταση dependencies
+RUN composer install --no-dev --optimize-autoloader
 
 # Δικαιώματα για storage και cache
 RUN chmod -R 777 storage bootstrap/cache
 
-# Ορισμός public folder ως web root
+# Ορισμός public ως web root
 ENV WEB_DOCUMENT_ROOT=/app/public
 
 # Cache για config, routes, views
-RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
+RUN php artisan config:cache || true
+RUN php artisan route:cache || true
+RUN php artisan view:cache || true
 
-# Port που θα χρησιμοποιήσει το Render
+# Port που θα χρησιμοποιηθεί
 EXPOSE 10000
 
-# Εκκίνηση Nginx και PHP-FPM
+# Εκκίνηση Nginx & PHP-FPM
 CMD ["/usr/bin/supervisord"]
