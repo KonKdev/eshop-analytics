@@ -30,7 +30,7 @@ RUN php artisan config:clear || true && \
     php artisan config:cache || true
 
 # Θύρα για Render
-EXPOSE 10000
+EXPOSE 80
 
 # Εκκίνηση όλων των υπηρεσιών
 CMD ["/usr/bin/supervisord"]
