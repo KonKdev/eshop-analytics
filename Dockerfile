@@ -3,34 +3,33 @@
 # ----------------------------------------------------------
 FROM webdevops/php-nginx:8.2-alpine
 
-# Ο φάκελος της εφαρμογής
 WORKDIR /app
 
-# Αντιγραφή αρχείων composer πρώτα (βελτιώνει caching)
+# Αντιγραφή composer αρχείων
 COPY composer.json composer.lock* ./
 
-# Εγκατάσταση dependencies
+# Εγκατάσταση dependencies χωρίς dev πακέτα
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress || true
 
 # Αντιγραφή όλου του project
 COPY . .
 
-# Δικαιώματα στα storage και cache (απαραίτητο για Render)
-RUN chmod -R 777 storage bootstrap/cache
+# 🟢 FIX: εξασφαλίζουμε ότι ο φάκελος logs υπάρχει και έχει δικαιώματα
+RUN mkdir -p storage/logs && \
+    chmod -R 777 storage bootstrap/cache
 
-# Δηλώνουμε το root του web server
+# Περιβάλλον Nginx/PHP-FPM
 ENV WEB_DOCUMENT_ROOT=/app/public
 ENV PHP_FPM_LISTEN=127.0.0.1:9000
 
-# Καθαρίζουμε και ξαναφτιάχνουμε όλα τα cached αρχεία config/routes/views
+# Καθαρίζουμε caches & ξαναφτιάχνουμε config
 RUN php artisan config:clear || true && \
     php artisan cache:clear || true && \
     php artisan route:clear || true && \
     php artisan view:clear || true && \
     php artisan config:cache || true
 
-# Το Laravel ακούει στο port 80 (Render το χρειάζεται)
 EXPOSE 80
 
-# ✅ Σωστή σειρά: τρέχει migrations αφού φορτωθεί το .env και πριν ξεκινήσει το supervisord
+# ✅ Τρέχει migrate και optimize πριν ξεκινήσει το app
 CMD php artisan migrate --force && php artisan optimize && /usr/bin/supervisord
